@@ -1,5 +1,6 @@
 package lostboy.todo.guis;
 
+import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -21,9 +22,14 @@ public class TodoGUI extends Screen {
 
     }
 
+    private int pointer = 0;
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         super.render(matrices, mouseX, mouseY, delta);
-        drawCenteredText(matrices, textRenderer, Text.literal("Hello World!"), width/2, height/2, 0xFFFFFF);
+        TodoListHandler.getInstance().getList().forEach(str -> {
+            drawCenteredText(matrices, textRenderer, Text.literal(str), width/2, height/2 + (pointer * 10), 0xFFFFFF);
+            pointer++;
+        });
+        pointer = 0;
     }
 }
