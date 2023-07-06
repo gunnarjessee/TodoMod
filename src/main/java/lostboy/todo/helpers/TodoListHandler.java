@@ -27,7 +27,7 @@ public class TodoListHandler {
         return list;
     }
 
-    public void remove(int position) {
+    public void remove(String position) {
         list.remove(position);
     }
 

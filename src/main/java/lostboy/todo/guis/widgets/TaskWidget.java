@@ -1,9 +1,11 @@
 package lostboy.todo.guis.widgets;
 
+import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.widget.ClickableWidget;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
 /*
@@ -14,25 +16,22 @@ import net.minecraft.text.Text;
 @Environment(EnvType.CLIENT)
 public class TaskWidget extends ClickableWidget {
 
-    private int id;
-    public int buttonWidth, buttonHeight, buttonX, buttonY;
-    public TaskWidget(int x, int y, int width, int height, Text message, int id) {
-        super(x, y, width, height, message);
+    private String id;
+    public TaskWidget(int x, int y, int width, int height,  String id) {
+        super(x, y, width, height, Text.literal("X"));
         this.id = id;
-        this.buttonWidth = 10;
-        this.buttonHeight = 10;
-        this.buttonX = x + 40;
-        this.buttonY = y;
-        this.initialize();
-    }
-
-    private void initialize() {
-
     }
 
     @Override
     public void appendNarrations(NarrationMessageBuilder builder) {
 
+    }
+
+    @Override
+    public void onClick(double mouseX, double mouseY) {
+        super.onClick(mouseX, mouseY);
+        TodoListHandler.getInstance().remove(this.id);
+        System.out.println("Removed: "+ this.id);
     }
 
     @Override
@@ -60,8 +59,5 @@ public class TaskWidget extends ClickableWidget {
         return super.charTyped(chr, modifiers);
     }
 
-    public void setHeight(int height) {
-        this.height = height;
-    }
 
 }

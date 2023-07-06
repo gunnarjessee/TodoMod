@@ -40,16 +40,14 @@ public class TodoGUI extends Screen {
     private int pointer = 0;
 
     // Needs to scroll in the future
-
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         super.render(matrices, mouseX, mouseY, delta);
         TodoListHandler.getInstance().getList().forEach(str -> {
-            TaskWidget widget = new TaskWidget((width / 2) - 10, 10 + (pointer * 20), 100, 10, Text.literal(str), pointer);
-
-            widget.setHeight(20);
+            int yOffset = pointer * 22;
+            TaskWidget widget = new TaskWidget((width / 2) + 10, 10 + yOffset, 20, 20, str);
             widget.render(matrices, mouseX, mouseY, delta);
-            widget.renderButton(matrices, mouseX, mouseY, delta);
+            textRenderer.draw(matrices, Text.literal(str), (width / 2) - 60, 10 + yOffset, 0x00BBFF);
             pointer++;
         });
         pointer = 0;
