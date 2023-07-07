@@ -28,13 +28,6 @@ public class TaskWidget extends ClickableWidget {
     }
 
     @Override
-    public void onClick(double mouseX, double mouseY) {
-        super.onClick(mouseX, mouseY);
-        TodoListHandler.getInstance().remove(this.id);
-        System.out.println("Removed: "+ this.id);
-    }
-
-    @Override
     public void mouseMoved(double mouseX, double mouseY) {
         super.mouseMoved(mouseX, mouseY);
     }
