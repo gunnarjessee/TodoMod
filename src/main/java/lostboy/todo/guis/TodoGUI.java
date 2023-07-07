@@ -1,6 +1,7 @@
 package lostboy.todo.guis;
 
 import lostboy.todo.TodoListMod;
+import lostboy.todo.guis.widgets.StringWidget;
 import lostboy.todo.guis.widgets.TaskWidget;
 import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.EnvType;
@@ -47,11 +48,17 @@ public class TodoGUI extends Screen {
     private int pointer = 0;
     private void draw() {
         clearChildren();
+        addDrawable(new StringWidget(width/2 - 20, 10, "TODO List (WIP)", 0xFFFFFF, textRenderer));
         addDrawableChild(submitButton);
         addDrawableChild(textFieldWidget);
+
         TodoListHandler.getInstance().getList().forEach(str -> {
-            int yOffset = pointer * 20;
-            addDrawableChild(new TaskWidget(width - 20, 10 + yOffset, 16, 20, str));
+            int yOffset = (pointer * 22) + 10;
+            addDrawable(new StringWidget(200, 14 + yOffset, str, textRenderer));
+            addDrawableChild(new ButtonWidget(200 - 20, 10 + yOffset, 16, 20, Text.literal("X"), button -> {
+                TodoListHandler.getInstance().remove(str);
+                draw();
+            }));
             pointer++;
         });
         pointer = 0;
