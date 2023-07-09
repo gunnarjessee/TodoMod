@@ -18,12 +18,6 @@ public class TodoListMod implements ModInitializer {
 	public void onInitialize() {
 		KeyBindHelper.InitKeyBindings();
 		TodoListHandler.getInstance().initialize();
-		TodoListHandler.getInstance().add("Task 1");
-		TodoListHandler.getInstance().add("Task 2");
-		TodoListHandler.getInstance().add("Task 3");
-		TodoListHandler.getInstance().add("Task 4");
-		TodoListHandler.getInstance().add("Task 5");
-
 		LOGGER.info("Hello Fabric world!");
 	}
 

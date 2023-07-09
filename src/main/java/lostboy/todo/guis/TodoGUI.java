@@ -6,6 +6,8 @@ import lostboy.todo.guis.widgets.TaskWidget;
 import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.MinecraftClientGame;
 import net.minecraft.client.font.MultilineText;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
@@ -14,6 +16,7 @@ import net.minecraft.client.gui.widget.ScrollableWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.texture.TextureManager;
 import net.minecraft.client.util.math.MatrixStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.text.LiteralTextContent;
 import net.minecraft.text.ScoreTextContent;
 import net.minecraft.text.Text;
@@ -44,6 +47,7 @@ public class TodoGUI extends Screen {
                 draw();
             });
             draw();
+
     }
     private int pointer = 0;
     private void draw() {

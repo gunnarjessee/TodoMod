@@ -1,5 +1,7 @@
 package lostboy.todo.guis.widgets;
 
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.Drawable;
 import net.minecraft.client.gui.DrawableHelper;
@@ -7,6 +9,7 @@ import net.minecraft.client.gui.Element;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
+@Environment(EnvType.CLIENT)
 public class StringWidget implements Drawable {
 
     private Text text;

@@ -16,6 +16,7 @@ public class TodoListHandler {
         return instance;
     }
     public void initialize() {
+
         list = new ArrayList<String>();
     }
 
@@ -30,5 +31,7 @@ public class TodoListHandler {
     public void remove(String position) {
         list.remove(position);
     }
+
+
 
 }
