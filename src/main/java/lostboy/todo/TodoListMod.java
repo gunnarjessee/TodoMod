@@ -1,5 +1,6 @@
 package lostboy.todo;
 
+import lostboy.todo.helpers.JsonHelper;
 import lostboy.todo.helpers.KeyBindHelper;
 import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.ModInitializer;
@@ -18,6 +19,9 @@ public class TodoListMod implements ModInitializer {
 	public void onInitialize() {
 		KeyBindHelper.InitKeyBindings();
 		TodoListHandler.getInstance().initialize();
+		JsonHelper.getInstance().initialize();
+		// loads json data when game starts, this will be moved to a world by world basis in the future
+		JsonHelper.getInstance().loadData();
 		LOGGER.info("Hello Fabric world!");
 	}
 

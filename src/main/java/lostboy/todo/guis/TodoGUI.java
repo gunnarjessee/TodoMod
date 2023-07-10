@@ -3,6 +3,7 @@ package lostboy.todo.guis;
 import lostboy.todo.TodoListMod;
 import lostboy.todo.guis.widgets.StringWidget;
 import lostboy.todo.guis.widgets.TaskWidget;
+import lostboy.todo.helpers.JsonHelper;
 import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -43,6 +44,7 @@ public class TodoGUI extends Screen {
             textFieldWidget = new TextFieldWidget(textRenderer, 10, 10, 100, 16, Text.literal(""));
             submitButton = new ButtonWidget(10, 30, 50, 20, Text.literal("ADD"), button -> {
                 TodoListHandler.getInstance().add(textFieldWidget.getText());
+                JsonHelper.getInstance().saveData();
                 textFieldWidget.setText("");
                 draw();
             });
@@ -61,6 +63,7 @@ public class TodoGUI extends Screen {
             addDrawable(new StringWidget(200, 14 + yOffset, str, textRenderer));
             addDrawableChild(new ButtonWidget(200 - 20, 10 + yOffset, 16, 20, Text.literal("X"), button -> {
                 TodoListHandler.getInstance().remove(str);
+                JsonHelper.getInstance().saveData();
                 draw();
             }));
             pointer++;

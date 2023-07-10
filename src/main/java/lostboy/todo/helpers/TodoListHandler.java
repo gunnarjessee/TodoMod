@@ -5,7 +5,7 @@ import java.util.List;
 
 public class TodoListHandler {
 
-    private List<String> list;
+    private ArrayList<String> list;
 
     private static TodoListHandler instance;
 
@@ -24,8 +24,12 @@ public class TodoListHandler {
         list.add(str);
     }
 
-    public List<String> getList() {
+    public ArrayList<String> getList() {
         return list;
+    }
+
+    public void setList(ArrayList<String> listData) {
+        this.list = listData;
     }
 
     public void remove(String position) {
