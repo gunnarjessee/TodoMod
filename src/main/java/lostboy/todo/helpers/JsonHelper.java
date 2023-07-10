@@ -55,7 +55,6 @@ public class JsonHelper {
                 TodoListMod.LOGGER.warn("Tasks could not loaded from the file.");
                 throw new RuntimeException(e);
             }
-        }
-    }
+        }    }
 
 }
