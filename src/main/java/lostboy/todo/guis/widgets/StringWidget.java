@@ -3,8 +3,8 @@ package lostboy.todo.guis.widgets;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.Drawable;
-import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.Element;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
@@ -12,11 +12,11 @@ import net.minecraft.text.Text;
 @Environment(EnvType.CLIENT)
 public class StringWidget implements Drawable {
 
-    private Text text;
-    private int x, y;
-    private TextRenderer textRenderer;
+    protected Text text;
+    protected int x, y;
+    protected TextRenderer textRenderer;
 
-    private int color;
+    protected int color;
 
     public StringWidget(int x, int y, String str, TextRenderer renderer) {
         this.x = x;
@@ -35,7 +35,7 @@ public class StringWidget implements Drawable {
     }
 
     @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        textRenderer.draw(matrices, this.text, this.x, this.y, color);
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        context.drawText(textRenderer, text, x, y, 0xFFFFFF, true);
     }
 }
