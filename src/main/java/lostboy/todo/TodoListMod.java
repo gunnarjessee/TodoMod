@@ -1,5 +1,6 @@
 package lostboy.todo;
 
+import lostboy.todo.events.PlayerJoinGameEvent;
 import lostboy.todo.helpers.JsonHelper;
 import lostboy.todo.helpers.KeyBindHelper;
 import lostboy.todo.helpers.TodoListHandler;
@@ -18,6 +19,7 @@ public class TodoListMod implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		KeyBindHelper.InitKeyBindings();
+		PlayerJoinGameEvent.initialize();
 		TodoListHandler.getInstance().initialize();
 		JsonHelper.getInstance().initialize();
 		// loads json data when game starts, this will be moved to a world by world basis in the future

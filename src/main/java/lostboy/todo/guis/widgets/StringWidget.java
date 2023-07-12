@@ -36,6 +36,6 @@ public class StringWidget implements Drawable {
 
     @Override
     public void render(DrawContext context, int mouseX, int mouseY, float delta) {
-        context.drawText(textRenderer, text, x, y, 0xFFFFFF, true);
+        context.drawText(textRenderer, text, x, y, color, false);
     }
 }

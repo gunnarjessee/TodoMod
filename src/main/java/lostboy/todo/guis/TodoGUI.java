@@ -1,30 +1,17 @@
 package lostboy.todo.guis;
 
-import lostboy.todo.TodoListMod;
 import lostboy.todo.guis.widgets.StringWidget;
 import lostboy.todo.helpers.JsonHelper;
 import lostboy.todo.helpers.TodoListHandler;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
-import net.minecraft.client.MinecraftClient;
-import net.minecraft.client.font.MultilineText;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.ScrollableWidget;
 import net.minecraft.client.gui.widget.TextFieldWidget;
-import net.minecraft.client.texture.TextureManager;
-import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.text.LiteralTextContent;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.ScoreTextContent;
 import net.minecraft.text.Text;
-import net.minecraft.util.Identifier;
-import org.apache.http.client.utils.Idn;
 
-import javax.xml.crypto.dsig.spec.HMACParameterSpec;
-import java.util.function.Supplier;
 
 @Environment(EnvType.CLIENT)
 public class TodoGUI extends Screen {
@@ -58,8 +45,8 @@ public class TodoGUI extends Screen {
         addDrawableChild(textFieldWidget);
 
         TodoListHandler.getInstance().getList().forEach(str -> {
-            int yOffset = (pointer * 22) + 10;
-            addDrawable(new StringWidget(200, 14 + yOffset, str, textRenderer));
+            int yOffset = (pointer * 22) + 20;
+            addDrawable(new StringWidget(200, 16 + yOffset, str, 0xf7ff08,textRenderer));
 
             addDrawableChild(new ButtonWidget.Builder(Text.literal("X"),button -> {
                 TodoListHandler.getInstance().remove(str);
@@ -72,7 +59,11 @@ public class TodoGUI extends Screen {
         pointer = 0;
     }
 
-
+    @Override
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context);
+        super.render(context, mouseX, mouseY, delta);
+    }
 
     @Override
     public boolean shouldPause() {
