@@ -1,0 +1,35 @@
+modLoader="javafml"
+loaderVersion="[46,)"
+
+license="All Rights Reserved"
+issueTrackerURL=""
+showAsResourcePack=false
+
+[[mods]]
+modId="todolist"
+version="1.4-forge-edition"
+displayName="Todo List"
+updateJSONURL=""
+displayURL="https://www.github.com/gunnarjessee"
+logoFile="logo.png"
+credits=""
+authors="Gunnar Jessee"
+description='''
+  Another way to organize your throughts in game
+  '''
+displayTest="MATCH_VERSION"
+
+
+[[dependencies.todolist]]
+modId="forge"
+mandatory=true
+versionRange="[46,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.todolist]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
