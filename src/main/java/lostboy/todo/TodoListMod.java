@@ -1,23 +1,29 @@
 package lostboy.todo;
 
-import net.fabricmc.api.ModInitializer;
-
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class TodoListMod implements ModInitializer {
-	// This logger is used to write text to the console and the log file.
-	// It is considered best practice to use your mod id as the logger's name.
-	// That way, it's clear which mod wrote info, warnings, and errors.
+@Mod(TodoListMod.MOD_ID)
+public class TodoListMod  {
+
 	public static final String MOD_ID = "todolist";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-	@Override
-	public void onInitialize() {
-		// This code runs as soon as Minecraft is in a mod-load-ready state.
-		// However, some things (like resources) may still be uninitialized.
-		// Proceed with mild caution.
+	//
+	public TodoListMod() {
+		IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
-		LOGGER.info("Hello Fabric world!");
+		// Register the commonSetup method for modloading
+		modEventBus.addListener(this::commonSetup);
+	}
+	private void commonSetup(final FMLCommonSetupEvent event)
+	{
+		// Some common setup code
+		LOGGER.info("Setting up common");
+
 	}
 }
