@@ -39,7 +39,7 @@ public class TodoGUI extends Screen {
     private int pointer = 0;
     private void draw() {
         clearChildren();
-        addDrawable(new StringWidget(width/2 - 20, 10, "TODO List (WIP)", 0xFFFFFF, textRenderer));
+        addDrawable(new StringWidget(width/2 - 20, 10, "TODO List", 0xFFFFFF, textRenderer));
         addDrawableChild(submitButton);
         addDrawableChild(textFieldWidget);
 
